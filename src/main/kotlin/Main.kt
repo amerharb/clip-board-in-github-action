@@ -5,14 +5,20 @@ import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
     println("Test Clip Board in Github Actions...")
-    val expected = "This is a test value"
+    println("Environment variable DISPLAY: ${System.getenv("DISPLAY")}")
+    val expected = if (args.isNotEmpty() && args[0].isNotBlank()) { args[0] } else "This is a test value"
+    println("Copying \"$expected\" to clipboard 📋...")
     putClipboard(expected)
+    println("Sleeping for 3 seconds ⏳...")
+    Thread.sleep(3000)
+    println("Reading clipboard 📋...")
     val actual = getClipboard()
+    println("Actual: \"$actual\"")
     if (expected != actual) {
-        println("ERROR: Expected: $expected, Actual: $actual")
+        println("❌ERROR: Expected: $expected, Actual: $actual")
         exitProcess(1)
     }
-    println("Test Passed")
+    println("Test Passed ✅")
 }
 
 fun getClipboard(): String {
