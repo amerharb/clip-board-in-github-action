@@ -18,6 +18,9 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      - name: setup evn var
+        run: export DISPLAY=:0.0
+
       - name: Cache Gradle packages
         uses: actions/cache@v3
         with:
