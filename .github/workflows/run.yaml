@@ -5,8 +5,10 @@ on:
     branches: [ "*" ]
 
 jobs:
-  test:
+  run:
     runs-on: ubuntu-latest
+    env:
+      DISPLAY: ":0.0"
 
     steps:
       - name: Checkout repository
@@ -32,5 +34,5 @@ jobs:
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
-      - name: Run main with env var value DISPLAY=:0.0
-        run: ./gradlew run --console=plain
+      - name: Run main
+        run: ./gradlew run

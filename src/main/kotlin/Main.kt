@@ -6,7 +6,7 @@ import kotlin.system.exitProcess
 fun main(args: Array<String>) {
     println("Test Clip Board in Github Actions...")
     println("Environment variable DISPLAY: ${System.getenv("DISPLAY")}")
-    val expected = if (args.isNotEmpty() && args[0].isNotBlank()) { args[0] } else "This is a test value"
+    val expected = if (args.isNotEmpty() && args[0].isNotBlank()) args[0] else "This is a test value"
     println("Copying \"$expected\" to clipboard 📋...")
     putClipboard(expected)
     println("Sleeping for 3 seconds ⏳...")
