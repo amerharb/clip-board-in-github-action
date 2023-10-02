@@ -32,5 +32,5 @@ jobs:
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
-      - name: Run main
-        run: ./gradlew run
+      - name: Run main with env var value DISPLAY=:0.0
+        run: ./gradlew run --console=plain
